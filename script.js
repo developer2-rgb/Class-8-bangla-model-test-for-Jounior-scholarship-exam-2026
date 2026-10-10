@@ -110,7 +110,7 @@ async function checkApproval(uid) {
   }
 }
 
-// 4. Render 3D FlipBook with dynamic image names
+// 4. Render 3D FlipBook with dynamic image names (.jpg extension)
 function initFlipbook() {
   const container = document.getElementById("flipbook");
   container.innerHTML = "";
