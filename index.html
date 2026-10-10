@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protected 3D FlipBook</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="protected-blur">
+
+  <!-- Password & Approval Modal -->
+  <div id="passwordModal" class="password-modal">
+    <!-- Step 1: Password Input -->
+    <div class="password-content" id="passwordBox">
+      <h3>Protected Book</h3>
+      <p>Access পাওয়ার জন্য Password দিন:</p>
+      <input type="password" id="passwordInput" placeholder="Password লিখুন..." autofocus>
+      <button id="submitPasswordBtn">Unlock</button>
+    </div>
+
+    <!-- Step 2: UID & Approval Box -->
+    <div class="password-content" id="approvalBox" style="display: none;">
+      <h3>Approval Required</h3>
+      <p>সঠিক Password দেওয়া হয়েছে! Access পেতে নিচের UID টি কপি করে আমাদের WhatsApp-এ পাঠান:</p>
+      <div class="uid-container">
+        <input type="text" id="uidDisplay" readonly>
+        <button id="copyUidBtn">Copy UID</button>
+      </div>
+      <p class="whatsapp-text">WhatsApp: <strong id="waNumberDisplay">01780685218</strong></p>
+      <p class="instruction-text">Admin Approve করার পর নিচের Button-এ Click করুন:</p>
+      <button id="checkStatusBtn">Check Approval Status</button>
+    </div>
+  </div>
+
+  <!-- Top Controls -->
+  <button id="searchBtn" title="Search Page">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+
+  <button id="fullscreenBtn" title="Toggle Fullscreen">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+    </svg>
+  </button>
+
+  <!-- Page Counter -->
+  <div id="pageCounter">Page: 1 / 170 (Printed: -)</div>
+
+  <!-- Navigation Arrows -->
+  <button class="nav-arrow left" id="prevBtn">&lt;</button>
+  <button class="nav-arrow right" id="nextBtn">&gt;</button>
+
+  <!-- Flipbook Container -->
+  <div id="zoomContainer">
+    <div id="flipbook"></div>
+  </div>
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
