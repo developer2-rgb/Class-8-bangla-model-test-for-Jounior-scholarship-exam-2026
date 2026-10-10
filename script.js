@@ -57,13 +57,11 @@ function getDeviceUID() {
 
 // 2. Strict Anti-Screenshot & Copy Protection
 function initAntiScreenshotSecurity() {
-  // Disable Right Click & Context Menu
   document.addEventListener("contextmenu", e => e.preventDefault());
 
-  // Disable Key Shortcuts (PrintScreen, Ctrl+P, Snipping Tool, Inspect)
   document.addEventListener("keyup", e => {
     if (e.key === "PrintScreen") {
-      navigator.clipboard.writeText(""); // Clear Clipboard
+      navigator.clipboard.writeText("");
       alert("Screenshots are strictly disabled!");
     }
   });
@@ -79,7 +77,6 @@ function initAntiScreenshotSecurity() {
     }
   });
 
-  // Screen Blur on Window Switch / Snipping Tool / Loss of Focus
   window.addEventListener("blur", () => {
     document.body.classList.add("protected-blur");
   });
@@ -110,13 +107,14 @@ async function checkApproval(uid) {
   }
 }
 
-// 4. Render 3D FlipBook with dynamic image names (.jpg extension)
+// 4. Render 3D FlipBook with URL Encoding
 function initFlipbook() {
   const container = document.getElementById("flipbook");
   container.innerHTML = "";
 
   for (let i = 1; i <= CONFIG.TOTAL_PAGES; i++) {
-    const fileName = `${CONFIG.IMAGE_PREFIX}${i}.jpg`;
+    const rawName = `${CONFIG.IMAGE_PREFIX}${i}.jpg`;
+    const fileName = encodeURIComponent(rawName);
     const pageDiv = document.createElement("div");
     pageDiv.className = "page";
     pageDiv.innerHTML = `<img src="${fileName}" alt="Page ${i}" loading="lazy">`;
@@ -205,5 +203,4 @@ searchBtn.addEventListener("click", () => {
   }
 });
 
-// Run Anti-Screenshot and Anti-Copy Protection on Load
 initAntiScreenshotSecurity();
